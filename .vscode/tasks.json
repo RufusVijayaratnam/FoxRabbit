@@ -1,0 +1,44 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build release",
+            "command": "cmake -S .. -B . -DCMAKE_BUILD_TYPE=Release && cmake --build .",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "type": "shell",
+            "label": "build debug",
+            "command": "cmake -S .. -B . -DCMAKE_BUILD_TYPE=Debug && cmake --build .",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "type": "shell",
+            "label": "build sanitize",
+            "command": "cmake -S .. -B . -DCMAKE_BUILD_TYPE=Sanitize && cmake --build .",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
