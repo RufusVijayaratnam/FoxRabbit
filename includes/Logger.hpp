@@ -6,6 +6,7 @@
 #include <string>
 #include <mutex>
 #include <sstream>
+#include <chrono>
 
 /**
  * @class Logger
@@ -40,6 +41,21 @@ public:
         if (logFile.is_open()) {
             logFile << message << std::endl;
         }
+    }
+
+    /**
+     * @brief Gets a formatted date time string
+     *
+     * @return Date time string formated as '[Y-m-d H:M:S]'
+     */
+    std::string dateTimeStr() {
+        auto now = std::chrono::system_clock::now();
+        auto in_time_t = std::chrono::system_clock::to_time_t(now);
+        std::tm utc_tm = *std::gmtime(&in_time_t);
+        std::tm local_tm = *std::localtime(&in_time_t);
+        std::ostringstream oss;
+        oss << std::put_time(&local_tm, "[%Y-%m-%d %H:%M:%S]");
+        return oss.str();
     }
 
 private:
