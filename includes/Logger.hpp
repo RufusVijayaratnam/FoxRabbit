@@ -27,6 +27,9 @@ public:
     Logger(const Logger&) = delete;
     Logger& operator=(const Logger&) = delete;
 
+    Logger(Logger&&) = delete;
+    Logger& operator=(Logger&&) = delete;
+
     /**
      * @brief Write log message to file. Uses mutex to protect from data race.
      *
