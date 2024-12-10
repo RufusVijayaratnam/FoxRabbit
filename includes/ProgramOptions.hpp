@@ -1,4 +1,9 @@
 #include <string>
+/**
+ * @class ProgramOptions
+ * @brief A singleton class to hold program configuration options
+ *
+ */
 class ProgramOptions {
 private:
     // Simulation Start Values
@@ -7,8 +12,29 @@ private:
 
     // Map
     std::string mapPath;
+    
+    // Private constructor to prevent another initialisation
+    ProgramOptions () = default;
+
+    // Delete copy constructor and copy assignment operator
+    ProgramOptions(const ProgramOptions&) = delete;
+    ProgramOptions& operator=(const ProgramOptions&) = delete;
+
+    // Delete move constructor and move assignment operator
+    ProgramOptions(ProgramOptions&&) = delete;
+    ProgramOptions& operator=(ProgramOptions&&) = delete;
 
 public:
+    /**
+     * @brief Get the singleton ProgramOptions instance
+     *
+     * @return A reference to the singleton ProgramOptions instance 
+     */
+    static ProgramOptions& getInstance() {
+        static ProgramOptions instance;
+        return instance;
+    }
+
     /**
      * @brief Parses command line options and populates a ProgramOptions instance
      *
