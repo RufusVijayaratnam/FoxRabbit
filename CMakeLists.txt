@@ -21,16 +21,19 @@ find_package(OpenCV REQUIRED)
 add_library(FRComponents STATIC 
     src/Animal.cpp
     src/Map.cpp
+    src/ProgramOptions.cpp
 )
 
 # Include directories for FRComponents
 target_include_directories(FRComponents PUBLIC
+    ${Boost_INCLUDE_DIRS}
     ${OpenCV_INCLUDE_DIRS}
     includes
 )
 
 # Link OpenCV libraries to FRComponents
 target_link_libraries(FRComponents PUBLIC 
+    ${Boost_LIBRARIES}
     ${OpenCV_LIBS}
 )
 
@@ -46,7 +49,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 # Link the library and Boost to the executable
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     FRComponents 
-    ${Boost_LIBRARIES}
 )
 
 # Set custom compile options for different build types
