@@ -34,7 +34,7 @@ target_include_directories(FRComponents PUBLIC
 # Link OpenCV libraries to FRComponents
 target_link_libraries(FRComponents PUBLIC 
     ${Boost_LIBRARIES}
-    ${OpenCV_LIBS}
+    ${OpenCV_LIBRARIES}
 )
 
 # Add the executable
